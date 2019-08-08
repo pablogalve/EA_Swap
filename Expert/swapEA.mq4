@@ -30,17 +30,24 @@ void OnDeinit(const int reason)
   
 void OnTick()
   {
-   if(DayOfWeek() == 3)
-      if(Hour()==23 - CloseHour)
-         if(Minute()==59 - CloseMinute)
-            if(Seconds()==00 - CloseSecond)
+        
+   if(DayOfWeek() == 3 && Hour()==22 && Minute()==50 && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==0)
+      //if(Hour()==22 - CloseHour)
+        //if(Minute()==50 - CloseMinute)
+            //if(Seconds()==00 - CloseSecond)
+            {
                int buy = OrderSend(Symbol(),OP_BUY,0.1,Ask,slippage,0,0,NULL,magic,NULL,clrGreen);
+            }
                
-   if(DayOfWeek() == 4)
-      if(Hour()==00 + OpenHour)
-         if(Minute()==04 + OpenMinute)
-            if(Seconds()==00 + OpenSecond)
-               CloseOrders(magic);            
+               
+   if(DayOfWeek() == 4 && Hour()==01 && Minute()==04 && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==1)
+      //if(Hour()==01 + OpenHour)
+         //if(Minute()==04 + OpenMinute)
+            //if(Seconds()==00 + OpenSecond)
+            {
+               CloseOrders(magic); 
+            }
+                          
   }
   
   
@@ -48,16 +55,12 @@ void OnTick()
   void CloseOrders(int magicN)
 {
    for(int i = OrdersTotal()-1;i>=0;i--)
-   {
-      
+   {      
       OrderSelect(i,SELECT_BY_POS,MODE_TRADES);
-      Print("Magic: " , OrderMagicNumber());
       if(OrderMagicNumber() == magicN)
       {
-         Print("2");
          if(OrderType() == OP_BUY)
          {
-            Print("3");
             OrderClose(OrderTicket(),OrderLots(),MarketInfo(OrderSymbol(),MODE_BID),slippage);
          }
          if(OrderType() == OP_SELL)
@@ -68,4 +71,19 @@ void OnTick()
          Print("OrderMagicNumber Error: " , GetLastError());
       }
    }
+}
+
+int activeOrders(int magicE)
+{
+   int orders =0;
+   
+   for(int i=OrdersTotal()-1;i>=0;i--)
+   {
+      OrderSelect(i,SELECT_BY_POS,MODE_TRADES);
+      if(OrderMagicNumber() == magicE)
+      {
+         orders++;
+      }
+   }
+   return orders;
 }
