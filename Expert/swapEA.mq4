@@ -31,25 +31,18 @@ void OnDeinit(const int reason)
 void OnTick()
   {
         
-   if(DayOfWeek() == 3 && Hour()==22 && Minute()==50 && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==0)
-      //if(Hour()==22 - CloseHour)
-        //if(Minute()==50 - CloseMinute)
-            //if(Seconds()==00 - CloseSecond)
-            {
-               int buy = OrderSend(Symbol(),OP_BUY,0.1,Ask,slippage,0,0,NULL,magic,NULL,clrGreen);
-            }
+   if(DayOfWeek() == 3 && (Hour()==22 - CloseHour) && (Minute()==50 - CloseMinute) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==0)
+   {
+      int buy = OrderSend(Symbol(),OP_BUY,0.1,Ask,slippage,0,0,NULL,magic,NULL,clrGreen);
+   }
                
                
-   if(DayOfWeek() == 4 && Hour()==01 && Minute()==04 && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==1)
-      //if(Hour()==01 + OpenHour)
-         //if(Minute()==04 + OpenMinute)
-            //if(Seconds()==00 + OpenSecond)
-            {
-               CloseOrders(magic); 
-            }
+   if(DayOfWeek() == 4 && (Hour()==01 + OpenHour) && (Minute()==04 + OpenMinute) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==1)
+   {
+      CloseOrders(magic); 
+   }
                           
   }
-  
   
   
   void CloseOrders(int magicN)
