@@ -14,6 +14,7 @@ If variance is too big, results will be random and not based on statistics and p
 
 ## Optimization and backtest
 We'll be using the asset AUDCHF on M1 timeframe.
+It's really important to make a lots of different tests to determine whether it is profitable or not and also (and really important) if results are random/luck or we really have a predictive power and statistic advantage.
 
 ### Round 1
 We make a general optimization to get an idea of what is the best time to open and close the position.
@@ -27,17 +28,17 @@ So, we open our position at "16 hours - OpenHour" and "59 min - OpenMinute"
 and we close that position at "17 hours + CloseHour" and "04 min + CloseMin".
 
 Example:
-If all the variables are set to 2, we'll open an order on wednesday at 14:57:00 and close it at 19:06:00 on the same day-
+If all the variables are set to 2, we'll open an order on wednesday at 14:57:00 and close it at 19:06:00 on the same day.
 
 <p align="left">
   <img src="Screenshots/graph1.PNG" width="1000" title="Graph">  
   <img src="Screenshots/results1.PNG" width="1000" title="Results"> 
 </p>
-On that first basic optimization we see that if we buy at around 12-13 hours and we close the position at around 17:30 we'll have positive results.
-However, this is a very general analysis so we'll have to go deeper in order to get reliable results.
+On that first basic optimization we see that if we buy at around 16:30-16:45 (15-30min before market closes) and we close the position at around 3-5am on the following day we'll have some positive results.
+However, this is a not enough to determine wether this is a profitable strategy or not, so we'll have to go further in order to get reliable results.
 
 ### Round 2
-We make a deeper backtest analysis based on the previous results.
+We'll take the previous results to continue our market analysis 
 
 
 ## Disclaimer
