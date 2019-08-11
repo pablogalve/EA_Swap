@@ -17,7 +17,7 @@ We'll be using the asset AUDCHF on M1 timeframe.
 
 ### Round 1
 We make a general optimization to get an idea of what is the best time to open and close the position.
-We'll be backtesting from 2018/01/02 to 2019/08/09 using a lot of different variables' values combination. Estimated time: 2 hours and 40 minutes
+We'll be backtesting from 2018/01/02 to 2019/08/09 (1 year and 8 months) using a lot of different variables' values combination. Estimated time: 2 hours and 40 minutes
 We are going to optimize the following variables:
 * OpenHour 
 * OpenMinute 
