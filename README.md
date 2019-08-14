@@ -56,7 +56,7 @@ We can observe that if we buy 0.1 lots of AUDCHF at 16:29 (New York time):
 | 16:29  | 07:34  | 480.27 (+4.8%)  | -3.43%  | 1.34  |
 | 16:29  | 07:19  | 477.76 (+4.8%)  | -3.23%  | 1.34  |
 
-### Round 3
+### Round 3 - Backtest 
 We make a backtest from 2010/01/01 to 2019/08/09 (9 years and 8 months) using the following rules:
 Buy AUDCHF at 16:29 on wednesday and sell it at 04:49 on thursday (always NY time)
 
@@ -68,7 +68,7 @@ Result:
 We can't predict the market using this strategy as results are random. During all that time we have bear, lateral and bull results.
 We had good results in the 2018-2019 backtest just because of luck, as the previous years were really bearish for our strategy.
 
-### Round 3
+### Round 4 - Backtest with different parameters
 We make a backtest making simple rules:
 Buy AUDCHF at 16:29 on wednesday and sell it at 17:49 on thursday (always NY time)
 
