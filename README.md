@@ -45,9 +45,9 @@ We'll take the previous results to continue our market analysis and we'll do a b
   <img src="Screenshots/results2.PNG" width="1000" title="Results"> 
 </p>
 
-We can observe that if we buy 0.1 lots of AUDCHF at 16:30
+We can observe that if we buy 0.1 lots of AUDCHF at 16:29 (New York time):
 
-| Buy Time  | Sell Time | Profit  | Drawdown | Profit Factor |
+| Buy Time (Wednesday)  | Sell Time (Thursday) | Profit  | Drawdown | Profit Factor |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | 16:29  | 04:49  | 528.50 (+5.3%)  | -2.73%  | 1.41  |
 | 16:29  | 07:49  | 516.76 (+5.2%)  | -3.26%  | 1.37  |
@@ -55,6 +55,28 @@ We can observe that if we buy 0.1 lots of AUDCHF at 16:30
 | 16:29  | 04:19  | 487.13 (+4.9%)  | -2.69%  | 1.4  |
 | 16:29  | 07:34  | 480.27 (+4.8%)  | -3.43%  | 1.34  |
 | 16:29  | 07:19  | 477.76 (+4.8%)  | -3.23%  | 1.34  |
+
+### Round 3
+We make a backtest from 2010/01/01 to 2019/08/09 (9 years and 8 months) using the following rules:
+Buy AUDCHF at 16:29 on wednesday and sell it at 04:49 on thursday (always NY time)
+
+<p align="left">
+  <img src="Screenshots/backtest.PNG" width="1000" title="Backtest">  
+</p>
+
+Result:
+We can't predict the market using this strategy as results are random. During all that time we have bear, lateral and bull results.
+We had good results in the 2018-2019 backtest just because of luck, as the previous years were really bearish for our strategy.
+
+### Round 3
+We make a backtest making simple rules:
+Buy AUDCHF at 16:29 on wednesday and sell it at 17:49 on thursday (always NY time)
+
+<p align="left">
+  <img src="Screenshots/backtest2.PNG" width="1000" title="Backtest">  
+</p>
+
+Results are even worse, as we only have bear and lateral results.
 
 
 
