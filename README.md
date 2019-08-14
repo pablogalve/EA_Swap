@@ -78,7 +78,10 @@ Buy AUDCHF at 16:29 on wednesday and sell it at 17:49 on thursday (always NY tim
 
 Results are even worse, as we only have bear and lateral results.
 
-
+### Conclusion
+I have discarded this EA because it's not profitable.
+So, I make it open source to use it for my portfolio.
+You see that I can code trading strategies, make backtests and optimizations to analyze about past performance and to determine wether we should operate that strategy or discard it.
 
 ## Disclaimer
 This code is disclosed publicly for educational purposes only.
