@@ -10,6 +10,7 @@
 
 int magic = 154;
 int slippage = 10;
+double lots = 0.1;
 input int CloseHour = 0;
 input int CloseMinute = 0;
 input int CloseSecond = 0;
@@ -31,9 +32,9 @@ void OnDeinit(const int reason)
 void OnTick()
   {
         
-   if(DayOfWeek() == 3 && (Hour()==22 - CloseHour) && (Minute()==50 - CloseMinute) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==0)
+   if(DayOfWeek() == 3 && (Hour()==22 - CloseHour) && (Minute()==59 - CloseMinute) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==0)
    {
-      int buy = OrderSend(Symbol(),OP_BUY,0.1,Ask,slippage,0,0,NULL,magic,NULL,clrGreen);
+      int buy = OrderSend(Symbol(),OP_BUY,lots,Ask,slippage,0,0,NULL,magic,NULL,clrGreen);
    }
                
                
