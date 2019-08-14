@@ -38,7 +38,24 @@ On that first basic optimization we see that if we buy at around 16:30-16:45 (15
 However, this is a not enough to determine wether this is a profitable strategy or not, so we'll have to go further in order to get reliable results.
 
 ### Round 2
-We'll take the previous results to continue our market analysis 
+We'll take the previous results to continue our market analysis and we'll do a backtest from 2018/01/02 to 2019/08/09 (1 year and 8 months)
+
+<p align="left">
+  <img src="Screenshots/graph2.PNG" width="1000" title="Graph">  
+  <img src="Screenshots/results2.PNG" width="1000" title="Results"> 
+</p>
+
+We can observe that if we buy 0.1 lots of AUDCHF at 16:30
+
+| Buy Time  | Sell Time | Profit  | Drawdown | Profit Factor |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+|   |   | 521.08 (+5.2%)  | -2.69%  | 1.41  |
+|   |   | 517.54 (+5.2%)  | -3.19%  | 1.37  |
+|   |   | 499.78 (+5%)  | -3.25% | 1.35  |
+|   |   | 483.08 (+4.8%)  | -3.27%  | 1.35  |
+|   |   | 473.68 (+4.7%)  | -3.48%  | 1.34  |
+|   |   | 471.45 (+4.7%)  | -2.98%  | 1.37  |
+
 
 
 ## Disclaimer
