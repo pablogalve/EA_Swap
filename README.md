@@ -68,6 +68,14 @@ Result:
 We can't predict the market using this strategy as results are random. During all that time we have bear, lateral and bull results.
 We had good results in the 2018-2019 backtest just because of luck, as the previous years were really bearish for our strategy.
 
+What would happen if instead of buying, we make the inverse operation?
+We could turn that losing performance into a winning one? 
+Let's see it: Instead of buying, we will sell
+
+<p align="left">
+  <img src="Screenshots/backtest_inverse.PNG" width="1000" title="Backtest">  
+</p>
+
 ### Round 4 - Backtest with different parameters
 We make a backtest making simple rules:
 Buy AUDCHF at 16:29 on wednesday and sell it at 17:49 on thursday (always NY time)
@@ -77,6 +85,13 @@ Buy AUDCHF at 16:29 on wednesday and sell it at 17:49 on thursday (always NY tim
 </p>
 
 Results are even worse, as we only have bear and lateral results.
+
+Instead of buying, we'll do the opposite. 
+Let's see the results:
+
+<p align="left">
+  <img src="Screenshots/backtest2_inverse.PNG" width="1000" title="Backtest">  
+</p>
 
 ### Conclusion
 I have discarded this EA because it's not profitable.
