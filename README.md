@@ -94,9 +94,10 @@ Let's see the results:
 </p>
 
 ### Conclusion
-I have discarded this EA because it's not profitable.
-So, I make it open source to use it for my portfolio.
-You see that I can code trading strategies, make backtests and optimizations to analyze about past performance and to determine wether we should operate that strategy or discard it.
+I have discarded this EA because it's not profitable, though I enjoyed the process of designing, learning MQL4 and coding the EA itself.
+So, I'll make it open source to use it for my portfolio.
+
+Thanks to that project you see that I can code trading strategies, make backtests and optimizations to analyze about past performance and to determine wether we should operate that strategy or discard it.
 
 ## Disclaimer
 This code is disclosed publicly for educational purposes only.
