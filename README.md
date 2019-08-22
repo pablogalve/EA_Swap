@@ -76,6 +76,8 @@ Let's see it: Instead of buying, we will sell
   <img src="Screenshots/backtest_inverse.PNG" width="1000" title="Backtest">  
 </p>
 
+We see that we would lose in both scenarios as fees, swaps and spreads make it impossible to reverse a strategy without losing a percentage. 
+
 ### Round 4 - Backtest with different parameters
 We make a backtest making simple rules:
 Buy AUDCHF at 16:29 on wednesday and sell it at 17:49 on thursday (always NY time)
@@ -95,7 +97,7 @@ Let's see the results:
 
 ### Conclusion
 I have discarded this EA because it's not profitable, though I enjoyed the process of designing, learning MQL4 and coding the EA itself.
-So, I'll make it open source to use it for my portfolio.
+So, I'll make it open source to use it for my programming portfolio.
 
 Thanks to that project you see that I can code trading strategies, make backtests and optimizations to analyze about past performance and to determine wether we should operate that strategy or discard it.
 
