@@ -23,6 +23,7 @@ input int OpenHour = 1;
 input int OpenMinute = 30;
 input int OpenSecond = 0;
 input operations operation = buy;
+string description = "description";
 
 int OnInit()
   {
@@ -40,12 +41,14 @@ void OnTick()
         
    if(DayOfWeek() == 3 && (Hour()==22 - CloseHour) && (Minute()==59 - CloseMinute) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==0)
    {
-      if(operation == buy)
-         int buy = OrderSend(Symbol(),OP_BUY,lots,Ask,slippage,0,0,NULL,magic,NULL,clrGreen);
-      else if(operation == sell)   
-         int sell = OrderSend(Symbol(),OP_SELL,lots,Bid,slippage,0,0,NULL,magic,NULL,clrRed);      
-   }
-               
+      if(CheckVolumeValue(lots,description)==true)
+      {
+         if(operation == buy)
+            int buy = OrderSend(Symbol(),OP_BUY,lots,Ask,slippage,0,0,NULL,magic,NULL,clrGreen);
+         else if(operation == sell)   
+            int sell = OrderSend(Symbol(),OP_SELL,lots,Bid,slippage,0,0,NULL,magic,NULL,clrRed);      
+      }
+   }            
                
    if(DayOfWeek() == 4 && (Hour()==01 + OpenHour) && (Minute()==04 + OpenMinute) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==1)
    {
@@ -90,3 +93,35 @@ int activeOrders(int magicE)
    }
    return orders;
 }
+
+bool CheckVolumeValue(double volume,string &description)
+  {
+//--- minimal allowed volume for trade operations
+   double min_volume=SymbolInfoDouble(Symbol(),SYMBOL_VOLUME_MIN);
+   if(volume<min_volume)
+     {
+      description=StringFormat("Volume is less than the minimal allowed SYMBOL_VOLUME_MIN=%.2f",min_volume);
+      return(false);
+     }
+
+//--- maximal allowed volume of trade operations
+   double max_volume=SymbolInfoDouble(Symbol(),SYMBOL_VOLUME_MAX);
+   if(volume>max_volume)
+     {
+      description=StringFormat("Volume is greater than the maximal allowed SYMBOL_VOLUME_MAX=%.2f",max_volume);
+      return(false);
+     }
+
+//--- get minimal step of volume changing
+   double volume_step=SymbolInfoDouble(Symbol(),SYMBOL_VOLUME_STEP);
+
+   int ratio=(int)MathRound(volume/volume_step);
+   if(MathAbs(ratio*volume_step-volume)>0.0000001)
+     {
+      description=StringFormat("Volume is not a multiple of the minimal step SYMBOL_VOLUME_STEP=%.2f, the closest correct volume is %.2f",
+                               volume_step,ratio*volume_step);
+      return(false);
+     }
+   description="Correct volume value";
+   return(true);
+  }
