@@ -8,6 +8,11 @@
 #property version   "1.00"
 #property strict
 
+enum operations{
+   buy,
+   sell,
+};
+
 int magic = 154;
 int slippage = 10;
 double lots = 0.1;
@@ -17,6 +22,7 @@ input int CloseSecond = 0;
 input int OpenHour = 0;
 input int OpenMinute = 0;
 input int OpenSecond = 0;
+input operations operation = buy;
 
 int OnInit()
   {
@@ -34,7 +40,10 @@ void OnTick()
         
    if(DayOfWeek() == 3 && (Hour()==22 - CloseHour) && (Minute()==59 - CloseMinute) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==0)
    {
-      int buy = OrderSend(Symbol(),OP_BUY,lots,Ask,slippage,0,0,NULL,magic,NULL,clrGreen);
+      if(operation == buy)
+         int buy = OrderSend(Symbol(),OP_BUY,lots,Ask,slippage,0,0,NULL,magic,NULL,clrGreen);
+      else if(operation == sell)   
+         int sell = OrderSend(Symbol(),OP_SELL,lots,Bid,slippage,0,0,NULL,magic,NULL,clrRed);      
    }
                
                
