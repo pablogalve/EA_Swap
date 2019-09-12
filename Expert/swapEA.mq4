@@ -16,11 +16,11 @@ enum operations{
 int magic = 154;
 int slippage = 10;
 input double lots = 0.1;
-input int CloseHour = 0;
-input int CloseMinute = 0;
+input int CloseHour = 1;
+input int CloseMinute = 30;
 input int CloseSecond = 0;
-input int OpenHour = 0;
-input int OpenMinute = 0;
+input int OpenHour = 1;
+input int OpenMinute = 30;
 input int OpenSecond = 0;
 input operations operation = buy;
 
