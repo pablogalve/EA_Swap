@@ -15,7 +15,7 @@ enum operations{
 
 int magic = 154;
 int slippage = 10;
-double lots = 0.1;
+input double lots = 0.1;
 input int CloseHour = 0;
 input int CloseMinute = 0;
 input int CloseSecond = 0;
