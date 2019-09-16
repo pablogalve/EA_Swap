@@ -65,6 +65,7 @@ void OnTick()
       {
          if(SL == 0)
          {
+         //We don't have a stop loss
             if(operation == buy)
                int buy = OrderSend(Symbol(),OP_BUY,lots,Ask,slippage,0,0,NULL,magic,NULL,clrGreen);
             else if(operation == sell)   
@@ -72,9 +73,9 @@ void OnTick()
          }else
          {
             if(operation == buy)
-               int buy = OrderSend(Symbol(),OP_BUY,lots,Ask,slippage,Ask-SL,0,NULL,magic,NULL,clrGreen);
+               int buy = OrderSend(Symbol(),OP_BUY,lots,Ask,slippage,Ask-(SL*_Point),0,NULL,magic,NULL,clrGreen);
             else if(operation == sell)   
-               int sell = OrderSend(Symbol(),OP_SELL,lots,Bid,slippage,Bid+SL,0,NULL,magic,NULL,clrRed);
+               int sell = OrderSend(Symbol(),OP_SELL,lots,Bid,slippage,Bid+(SL*_Point),0,NULL,magic,NULL,clrRed);
          }
              
       }
