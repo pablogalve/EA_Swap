@@ -27,6 +27,7 @@ input daysOfWeek swapDay = wednesday;
 int magic = 154;
 int slippage = 10;
 input double lots = 0.1;
+input int SL = 0; //SL (in points). 0=No SL
 
 input int CloseHour = 1;
 input int CloseMinute = 30;
@@ -38,7 +39,7 @@ input int OpenMinute = 30;
 
 input operations operation = buy;
 
-input double maxSpread = 10; //Max Spread to close (in Points)
+input int maxSpread = 10; //Max Spread to close (in Points)
 double spread = MarketInfo(0,MODE_SPREAD);
 
 
@@ -62,17 +63,27 @@ void OnTick()
    {
       if(CheckVolumeValue(lots,description)==true)
       {
-         if(operation == buy)
-            int buy = OrderSend(Symbol(),OP_BUY,lots,Ask,slippage,0,0,NULL,magic,NULL,clrGreen);
-         else if(operation == sell)   
-            int sell = OrderSend(Symbol(),OP_SELL,lots,Bid,slippage,0,0,NULL,magic,NULL,clrRed);      
+         if(SL == 0)
+         {
+            if(operation == buy)
+               int buy = OrderSend(Symbol(),OP_BUY,lots,Ask,slippage,0,0,NULL,magic,NULL,clrGreen);
+            else if(operation == sell)   
+               int sell = OrderSend(Symbol(),OP_SELL,lots,Bid,slippage,0,0,NULL,magic,NULL,clrRed);  
+         }else
+         {
+            if(operation == buy)
+               int buy = OrderSend(Symbol(),OP_BUY,lots,Ask,slippage,Ask-SL,0,NULL,magic,NULL,clrGreen);
+            else if(operation == sell)   
+               int sell = OrderSend(Symbol(),OP_SELL,lots,Bid,slippage,Bid+SL,0,NULL,magic,NULL,clrRed);
+         }
+             
       }
    }
    //We have already received our 3x swap
    if(getSwap(magic) > 0)
    {
       spread = MarketInfo(0,MODE_SPREAD);
-      if(spread <= maxSpread)
+      if(spread <= maxSpread*_Point)
       {
          CloseOrders(magic);
       } 
