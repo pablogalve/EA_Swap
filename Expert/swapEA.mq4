@@ -13,16 +13,33 @@ enum operations{
    sell,
 };
 
+enum daysOfWeek{
+   sunday,
+   monday,
+   tuesday,
+   wednesday,
+   thursday,
+   friday,
+   saturday,
+};
+input daysOfWeek swapDay = wednesday;
 int magic = 154;
 int slippage = 10;
 input double lots = 0.1;
+
 input int CloseHour = 1;
 input int CloseMinute = 30;
-input int CloseSecond = 0;
+//input int CloseSecond = 0;
+
 input int OpenHour = 1;
 input int OpenMinute = 30;
-input int OpenSecond = 0;
+//input int OpenSecond = 0;
+
 input operations operation = buy;
+
+input double maxSpread = 10; //Max Spread to close (in Points)
+double spread = MarketInfo(0,MODE_SPREAD);
+
 string description = "description";
 
 int OnInit()
@@ -49,7 +66,7 @@ void OnTick()
             int sell = OrderSend(Symbol(),OP_SELL,lots,Bid,slippage,0,0,NULL,magic,NULL,clrRed);      
       }
    }            
-               
+           
    if(DayOfWeek() == 4 && (Hour()==01 + OpenHour) && (Minute()==04 + OpenMinute) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==1)
    {
       CloseOrders(magic); 
