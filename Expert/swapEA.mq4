@@ -5,7 +5,7 @@
 //+------------------------------------------------------------------+
 #property copyright "Copyright 2019, Pablo."
 #property link      "https://www.mql5.com"
-#property version   "1.00"
+#property version   "1.10"
 #property strict
 
 enum operations{
