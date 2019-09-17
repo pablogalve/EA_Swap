@@ -29,6 +29,8 @@ int slippage = 10;
 input double lots = 0.1;
 input int SL = 0; //SL (in points). 0=No SL
 
+input int swapHour = 23; //Swap is charged at 23:00h
+
 input int CloseHour = 1; //Close 1h after 3x swap
 input int CloseMinute = 30; //Close 30min after 3x swap
 //input int CloseSecond = 0;
@@ -59,7 +61,7 @@ void OnDeinit(const int reason)
 void OnTick()
   {
         
-   if(DayOfWeek() == swapDay && (Hour()==22 - CloseHour) && (Minute()==59 - CloseMinute) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==0)
+   if(DayOfWeek() == swapDay && (Hour()==swapHour - CloseHour-1) && (Minute()==59 - CloseMinute) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==0)
    {
       if(CheckVolumeValue(lots,description)==true)
       {
