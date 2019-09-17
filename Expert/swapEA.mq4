@@ -29,17 +29,17 @@ int slippage = 10;
 input double lots = 0.1;
 input int SL = 0; //SL (in points). 0=No SL
 
-input int CloseHour = 1;
-input int CloseMinute = 30;
+input int CloseHour = 1; //Close 1h after 3x swap
+input int CloseMinute = 30; //Close 30min after 3x swap
 //input int CloseSecond = 0;
 
-input int OpenHour = 1;
-input int OpenMinute = 30;
+input int OpenHour = 1; //Open 1h before 3x swap
+input int OpenMinute = 30; //Open 30min before 3x swap
 //input int OpenSecond = 0;
 
 input operations operation = buy;
 
-input int maxSpread = 10; //Max Spread to close (in Points)
+input int maxSpread = 10; //Close if spread <= (in points)
 double spread = MarketInfo(0,MODE_SPREAD);
 
 
@@ -59,7 +59,7 @@ void OnDeinit(const int reason)
 void OnTick()
   {
         
-   if(DayOfWeek() == 3 && (Hour()==22 - CloseHour) && (Minute()==59 - CloseMinute) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==0)
+   if(DayOfWeek() == swapDay && (Hour()==22 - CloseHour) && (Minute()==59 - CloseMinute) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==0)
    {
       if(CheckVolumeValue(lots,description)==true)
       {
