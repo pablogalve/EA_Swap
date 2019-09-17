@@ -61,7 +61,7 @@ void OnDeinit(const int reason)
 void OnTick()
   {
         
-   if(DayOfWeek() == swapDay && (Hour()==swapHour - CloseHour-1) && (Minute()==59 - CloseMinute) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==0)
+   if(DayOfWeek() == swapDay && (Hour()==swapHour - CloseHour - 1) && (Minute()==59 - CloseMinute) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==0)
    {
       if(CheckVolumeValue(lots,description)==true)
       {
@@ -91,12 +91,23 @@ void OnTick()
          CloseOrders(magic);
       } 
    }            
-         
-   if(DayOfWeek() == 4 && (Hour()==01 + OpenHour) && (Minute()==04 + OpenMinute) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==1)
+   
+   //If we have to close the order on next day
+   if((swapHour + OpenHour + 1) >= 24)
    {
-      CloseOrders(magic); 
-   }
-                          
+      if(DayOfWeek() == swapDay+1 && (Hour()==(swapHour + OpenHour - 24)) && (Minute()==(0 + OpenMinute)) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==1)
+      {
+         CloseOrders(magic); 
+      } 
+   }else //if order is closed the same day
+   {
+      if(DayOfWeek() == swapDay && (Hour()==(swapHour + OpenHour)) && (Minute()==(0 + OpenMinute)) && (Seconds() >= 0 && Seconds() <= 60) && activeOrders(magic)==1)
+      {
+         CloseOrders(magic); 
+      }      
+   }      
+   
+                         
   }
   
   
